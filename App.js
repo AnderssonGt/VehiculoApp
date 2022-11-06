@@ -7,16 +7,19 @@ import {
   Alert,
   Pressable,
   Image,
-  ScrollView
+  ScrollView,
+  Modal
 } from 'react-native'
-import NuevoVehiculo from './src/NuevoVehiculo';
+import ListarVehiculo from './src/ListarVehiculo';
 import Encabezado from './src/Cuerpo';
 import Cuerpo from './src/Cuerpo';
+import PocketBase from 'pocketbase';
 
 
 const App = () => {
 
   const [Marca, setMarca] = useState('');
+  const [MostrarListado, setMostrarListado] = useState(false);
 
   return (
 
@@ -32,7 +35,20 @@ const App = () => {
         <Cuerpo
           Marca={Marca}
           setMarca={setMarca}
+          setMostrarListado={setMostrarListado}
         />
+
+        <Modal
+        animationType='slide'
+        visible={MostrarListado}
+        >
+        <ListarVehiculo
+        MostrarListado={MostrarListado}
+        setMostrarListado={setMostrarListado}
+        />
+        </Modal>
+
+        
 
       </ScrollView>
     </SafeAreaView>

@@ -11,8 +11,8 @@ import {
   ScrollView,
 } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
-
-const Cuerpo = ({ setMarca, Marca }) => {
+import PocketBase from 'pocketbase';
+const Cuerpo = ({ setMarca, Marca,setMostrarListado}) => {
   return (
 
     <View style={styles.cuerpo}>
@@ -114,6 +114,14 @@ const Cuerpo = ({ setMarca, Marca }) => {
       >
         <Text style={styles.textoBoton}>Guardar Vehiculo</Text>
       </Pressable>
+
+      <Pressable
+        style={styles.botonAgregar}
+        onPress={() => {setMostrarListado(true)}}
+      >
+        <Text style={styles.textoBoton}>Listado Vehiculo</Text>
+      </Pressable>
+      
     </View>
 
 
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
   cuerpo: {
     backgroundColor: '#fff',
     borderTopLeftRadius: 50,
-    minHeight: 950,
+    minHeight: 1000,
     marginBottom: 10,
     borderBottomRightRadius: 50,
   },
